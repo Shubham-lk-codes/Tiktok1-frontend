@@ -1,4 +1,4 @@
-/* eslint-disable no-unused-vars */
+// eslint-disable-next-line no-unused-vars
 import React, { useEffect, useState } from 'react';
 import API from '../utils/api'; // API.js for connecting to the backend
 import VideoCard from '../components/VideoCard'; // VideoCard Component for displaying video details
@@ -7,7 +7,7 @@ import { FaStar, FaComment } from 'react-icons/fa'; // Icons for rating and comm
 const VideoPage = () => {
   const [videos, setVideos] = useState([]);
   const [rating, setRating] = useState(0);
-  const [comment, setComment] = useState("");
+  const [comment, setComment] = useState('');
   const [isLoading, setIsLoading] = useState(true);
 
   // Fetch videos from the backend
@@ -42,14 +42,11 @@ const VideoPage = () => {
       );
 
       alert('Rating submitted!');
-      // Optionally, you can re-fetch the videos to show the updated ratings.
     } catch (error) {
       console.error('Error submitting rating:', error);
-      if (error.response) {
-        alert(error.response.data.message || 'There was an error submitting your rating. Please try again later.');
-      } else {
-        alert('Network error. Please try again later.');
-      }
+      alert(
+        error.response?.data?.message || 'There was an error submitting your rating. Please try again later.'
+      );
     }
   };
 
@@ -69,14 +66,11 @@ const VideoPage = () => {
       );
 
       alert('Comment added!');
-      // Optionally, re-fetch videos or update the state to show the new comment
     } catch (error) {
       console.error('Error adding comment:', error);
-      if (error.response) {
-        alert(error.response.data.message || 'There was an error submitting your comment. Please try again later.');
-      } else {
-        alert('Network error. Please try again later.');
-      }
+      alert(
+        error.response?.data?.message || 'There was an error submitting your comment. Please try again later.'
+      );
     }
   };
 
@@ -89,7 +83,10 @@ const VideoPage = () => {
       ) : (
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
           {videos.map((video) => (
-            <div key={video._id} className="bg-gray-800 p-4 rounded-lg shadow-lg hover:shadow-xl transition-shadow">
+            <div
+              key={video?._id || Math.random()}
+              className="bg-gray-800 p-4 rounded-lg shadow-lg hover:shadow-xl transition-shadow"
+            >
               <VideoCard video={video} />
               <div className="mt-4">
                 <div className="flex items-center space-x-2">
