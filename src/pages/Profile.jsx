@@ -3,13 +3,12 @@ import React, { useEffect, useState } from "react";
 import API from "../utils/api";
 import { useNavigate } from "react-router-dom";
 import UsersList from "./UsersList";
-// eslint-disable-next-line no-unused-vars
-import Navbar from "../components/Navbar";
-import { Link } from "react-router-dom";
+import VideoPage from "./Video";
 
 const Profile = () => {
   const [user, setUser] = useState(null);
   const [uploading, setUploading] = useState(false);
+  const [showVideos, setShowVideos] = useState(false);
   const navigate = useNavigate();
   const token = localStorage.getItem("token");
 
@@ -68,13 +67,12 @@ const Profile = () => {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-r from-blue-900 via-indigo-900 to-purple-800 text-white flex flex-col lg:flex-row">
-      {/* Left section: Profile details */}
-      <div className="w-full lg:w-3/12 p-8 lg:p-12 bg-gray-800 bg-opacity-70 rounded-lg shadow-2xl">
+    <div className="min-h-screen bg-gradient-to-br from-gray-900 via-purple-900 to-black text-white flex flex-col lg:flex-row">
+      <div className="w-full lg:w-1/3 p-8 lg:p-12 bg-gray-800 bg-opacity-70 rounded-lg shadow-xl">
         {user ? (
-          <div className="relative max-w-md w-full bg-gray-700 p-6 rounded-lg shadow-md">
+          <div className="relative max-w-md mx-auto bg-gradient-to-br from-purple-800 to-gray-900 p-6 rounded-xl shadow-lg">
             <div className="relative flex justify-center mb-6">
-              <div className="relative w-32 h-32 rounded-full bg-gray-700 overflow-hidden border-4 border-gradient-to-r from-blue-500 to-indigo-600">
+              <div className="relative w-36 h-36 rounded-full overflow-hidden border-4 border-purple-500 shadow-md">
                 {user.profileImage ? (
                   <img
                     src={user.profileImage}
@@ -82,13 +80,13 @@ const Profile = () => {
                     className="w-full h-full object-cover"
                   />
                 ) : (
-                  <div className="flex items-center justify-center w-full h-full text-gray-300">
-                    <span className="text-xl font-bold">+</span>
+                  <div className="flex items-center justify-center w-full h-full bg-gray-700 text-gray-300">
+                    <span className="text-2xl font-bold">+</span>
                   </div>
                 )}
                 <label
                   htmlFor="imageUpload"
-                  className="absolute bottom-1 right-1 bg-blue-500 text-white p-2 rounded-full cursor-pointer hover:bg-blue-600 transition-all ease-in-out duration-200"
+                  className="absolute bottom-2 right-2 bg-purple-600 text-white p-2 rounded-full cursor-pointer hover:bg-purple-700 transition-all ease-in-out duration-200"
                 >
                   <input
                     id="imageUpload"
@@ -98,48 +96,52 @@ const Profile = () => {
                     className="hidden"
                     disabled={uploading}
                   />
-                  📷
+                  📸
                 </label>
               </div>
             </div>
-            <h1 className="text-4xl font-semibold mb-4 text-center">Profile</h1>
-            <div className="mb-6">
-              <label className="block font-semibold text-lg">Name:</label>
-              <p className="text-xl">{user.name}</p>
+
+            <h1 className="text-3xl font-extrabold text-center mb-6">{user.name}</h1>
+
+            <div className="space-y-4">
+              <div>
+                <label className="block text-lg font-medium">Email:</label>
+                <p className="text-xl text-purple-300">{user.email}</p>
+              </div>
+              <div>
+                <label className="block text-lg font-medium">Role:</label>
+                <p className="text-xl text-purple-300 capitalize">{user.role}</p>
+              </div>
             </div>
-            <div className="mb-6">
-              <label className="block font-semibold text-lg">Email:</label>
-              <p className="text-xl">{user.email}</p>
-            </div>
-            <div className="mb-6">
-              <label className="block font-semibold text-lg">Role:</label>
-              <p className="text-xl">{user.role}</p>
-            </div>
+
             <button
               onClick={handleLogout}
-              className="bg-red-600 w-full py-2 text-white rounded-lg text-lg hover:bg-red-700 transition-all duration-300"
+              className="mt-6 w-full py-3 bg-red-600 text-white font-semibold rounded-lg shadow-lg hover:bg-red-700 transition-all duration-300"
             >
               Logout
             </button>
           </div>
         ) : (
-          <p className="text-gray-400">Loading profile...</p>
+          <p className="text-gray-400 text-center">Loading profile...</p>
         )}
       </div>
 
-      {/* Right section: Users List + Explore Video */}
-      <div className="w-full lg:w-9/12 p-8 lg:p-12 bg-gray-800 bg-opacity-70">
-        <UsersList />
-
-        {/* Explore Video Button */}
-        <div className="w-full mt-8">
-          <Link
-            to="/VideoPage"
-            className="block w-full py-4 px-6 bg-gradient-to-r from-blue-500 to-indigo-600 text-white text-center font-semibold rounded-xl shadow-lg hover:from-indigo-600 hover:to-blue-500 transition-all ease-in-out duration-300 transform hover:scale-105"
-          >
-            Explore Videos
-          </Link>
-        </div>
+      <div className="w-full lg:w-2/3 p-8 lg:p-12">
+        {showVideos ? (
+          <VideoPage />
+        ) : (
+          <>
+            <UsersList />
+            <div className="w-full mt-8">
+              <button
+                onClick={() => setShowVideos(true)}
+                className="block w-full py-4 px-6 bg-gradient-to-r from-purple-500 to-indigo-600 text-white text-center font-semibold rounded-lg shadow-lg hover:from-indigo-600 hover:to-purple-500 transition-all ease-in-out duration-300 transform hover:scale-105"
+              >
+                Explore Videos
+              </button>
+            </div>
+          </>
+        )}
       </div>
     </div>
   );
