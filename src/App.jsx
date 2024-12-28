@@ -1,6 +1,6 @@
 // eslint-disable-next-line no-unused-vars
 import React from "react";
-import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
+import { BrowserRouter as Router, Route, Routes, BrowserRouter } from "react-router-dom";
 
 import Home from "./pages/Home";
 import Login from "./pages/Login";
@@ -13,7 +13,7 @@ import Profile from "./pages/Profile";
 import UsersList from "./pages/UsersList";
 const App = () => {
   return (
-    <Router>
+    <BrowserRouter>
       <Routes>
         <Route path="/UnauthHome" element={<Home />} />
         <Route path="/login" element={<Login />} />
@@ -25,7 +25,7 @@ const App = () => {
         <Route path="/Profile" element={<Profile />} />
         <Route path="/users" element={<UsersList />} />
       </Routes>
-    </Router>
+    </BrowserRouter>
   );
 };
 
