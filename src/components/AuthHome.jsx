@@ -1,5 +1,6 @@
 import Navbar from "./Navbar";
 import Profile from "../pages/Profile";
+import Footer from "./Footer";
 
 const AuthHome = ()=>{
     return(
@@ -17,6 +18,7 @@ const AuthHome = ()=>{
             </div>
 
         </div>
+        <Footer />
         </>
     )
         

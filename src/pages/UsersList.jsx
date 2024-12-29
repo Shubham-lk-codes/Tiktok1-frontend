@@ -44,7 +44,7 @@ const UsersList = () => {
 
   return (
     <div className="max-w-4xl mx-auto p-8 bg-gradient-to-r from-purple-800 via-indigo-900 to-blue-900 text-white rounded-xl shadow-2xl">
-      <h1 className="text-4xl font-bold text-center mb-8">Users List</h1>
+      <h1 className="text-4xl font-bold text-center mb-8">Users </h1>
       {users.length === 0 ? (
         <p className="text-center text-gray-300">No users found</p>
       ) : (

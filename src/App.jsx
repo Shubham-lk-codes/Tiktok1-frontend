@@ -11,6 +11,7 @@ import VideoPage from "./pages/Video";
 import UnuthHome from "./components/UnauthHome";
 import Profile from "./pages/Profile";
 import UsersList from "./pages/UsersList";
+import Footer from "./components/Footer";
 const App = () => {
   return (
     <Router>
@@ -24,6 +25,7 @@ const App = () => {
         <Route path="/" element={<UnuthHome />} />
         <Route path="/profile" element={<Profile />} />
         <Route path="/users" element={<UsersList />} />
+        <Route path="/footer" element={<Footer />} />
       </Routes>
     </Router>
   );
