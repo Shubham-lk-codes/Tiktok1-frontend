@@ -91,9 +91,9 @@ const HomePage = () => {
                 key={video._id}
                 className="bg-gray-800 rounded-lg shadow-lg p-4 flex flex-col space-y-4"
               >
-                <div className="aspect-w-16 aspect-h-9 bg-black rounded-lg overflow-hidden">
+                <div className="aspect-w-6 aspect-h-6 bg-black rounded-lg overflow-hidden">
                   <video
-                    className="w-full h-full object-cover"
+                    className="w-full h-[80vh] object-cover"
                     controls
                     src={video.url} // Use the URL fetched from the backend
                     alt={video.title}
