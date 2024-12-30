@@ -23,8 +23,8 @@ const SidebarFooter = () => {
   `;
 
   const footerButtonClass = `
-    flex flex-col items-center hover:bg-blue-500 hover:text-white p-2 
-    rounded-md transition duration-300 
+    flex flex-col items-center hover:bg-blue-500 hover:text-white  
+    rounded-md transition duration-300 space-y-1
   `;
 
   // Right-side content to display based on state
@@ -62,9 +62,9 @@ const SidebarFooter = () => {
   };
 
   return (
-    <div className="flex">
+    <div className="flex ">
       {/* Sidebar for large screens */}
-      <div className="hidden lg:fixed lg:left-0 lg:top-19 lg:h-full lg:w-[16vw] lg:bg-gradient-to-br lg:from-gray-900 lg:via-purple-500 lg:to-black lg:shadow-lg lg:border-r lg:border-gray-300 lg:flex lg:flex-col lg:justify-around lg:items-center py-6 space-y-4">
+      <div className="hidden lg:fixed lg:left-0 lg:top-19 lg:h-full lg:w-[16vw] lg:bg-gradient-to-br lg:from-gray-900 lg:via-purple-500 lg:to-black lg:shadow-lg lg:border-r lg:border-gray-300 lg:flex lg:flex-col lg:justify-around lg:items-center py-6 space-y-1">
         <button
           className={buttonClass}
           onClick={() => setActiveContent("home")}
