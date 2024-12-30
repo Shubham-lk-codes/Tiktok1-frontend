@@ -1,3 +1,4 @@
+// eslint-disable-next-line no-unused-vars
 import React, { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import API from '../utils/api';
@@ -24,7 +25,7 @@ const Navbar = () => {
   };
 
   return (
-    <nav className="bg-gray-800 text-white p-4 flex flex-wrap justify-between items-center relative">
+    <nav className="bg-gray-800 text-white p-4 flex flex-wrap justify-between items-center relative fixed">
       {/* Left section: App name */}
       <h1 className="text-lg font-bold">TikTok App</h1>
 

@@ -13,12 +13,12 @@ const UnuthHome = () => {
           <div className="w-full mb-4">
             <Login />
           </div>
-          <Link
+          {/* <Link
             to="/forgot-password"
             className="block text-gray-300 hover:text-white text-sm mt-2"
           >
             Forgot Password?
-          </Link>
+          </Link> */}
           <div className="mt-6">
             <p className="text-gray-300">Don’t have an account?</p>
             <Link

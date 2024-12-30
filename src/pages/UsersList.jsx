@@ -6,7 +6,6 @@ const UsersList = () => {
   const [users, setUsers] = useState([]);
   const [error, setError] = useState("");
   const [loading, setLoading] = useState(true);
-  const [currentIndex, setCurrentIndex] = useState(0);
 
   useEffect(() => {
     const fetchUsers = async () => {
@@ -25,14 +24,6 @@ const UsersList = () => {
     fetchUsers();
   }, []);
 
-  const nextUser = () => {
-    if (currentIndex < users.length - 1) setCurrentIndex(currentIndex + 1);
-  };
-
-  const prevUser = () => {
-    if (currentIndex > 0) setCurrentIndex(currentIndex - 1);
-  };
-
   if (loading) {
     return <p className="text-center text-gray-400 text-lg">Loading...</p>;
   }
@@ -40,55 +31,42 @@ const UsersList = () => {
     return <p className="text-center text-red-500 text-lg">{error}</p>;
   }
 
-  const currentUser = users[currentIndex];
-
   return (
-    <div className="max-w-4xl mx-auto p-8 bg-gradient-to-r from-purple-800 via-indigo-900 to-blue-900 text-white rounded-xl shadow-2xl">
-      <h1 className="text-4xl font-bold text-center mb-8">Users </h1>
+    <div className="max-w-full mx-auto p-8 bg-gradient-to-r from-purple-800 via-indigo-900 to-blue-900 text-white rounded-xl shadow-2xl">
+      <h1 className="text-4xl font-bold text-center mb-8">Users List</h1>
       {users.length === 0 ? (
         <p className="text-center text-gray-300">No users found</p>
       ) : (
-        <div className="relative flex flex-col items-center bg-gray-800 bg-opacity-90 p-6 rounded-2xl shadow-lg space-y-6">
-          {/* Previous Button */}
-          <button
-            className="absolute left-4 text-4xl text-indigo-400 hover:text-indigo-500 disabled:text-gray-600 disabled:cursor-not-allowed transform hover:scale-110 transition duration-200"
-            onClick={prevUser}
-            disabled={currentIndex === 0}
-          >
-            &#8592;
-          </button>
+        <div className="flex overflow-x-auto space-x-6 py-4">
+          {users.map((user, index) => (
+            <div
+              key={user._id || index}
+              className="min-w-[250px] flex-shrink-0 flex flex-col items-center bg-gray-800 bg-opacity-90 p-6 rounded-2xl shadow-lg space-y-4"
+            >
+              {/* User Profile Image */}
+              {user.profileImage && (
+                <img
+                  src={user.profileImage}
+                  alt={`${user.name}'s Profile`}
+                  className="w-24 h-24 rounded-full object-cover shadow-lg border-4 border-gradient-to-r from-blue-500 to-purple-500"
+                />
+              )}
+              <div className="text-center space-y-3">
+                <h2 className="text-2xl font-semibold">{user.name}</h2>
+                <p className="text-lg text-gray-300">
+                  <strong>Email:</strong> {user.email}
+                </p>
+                <p className="text-lg text-gray-300">
+                  <strong>Role:</strong> {user.role}
+                </p>
+              </div>
 
-          {/* User Profile */}
-          {currentUser.profileImage && (
-            <img
-              src={currentUser.profileImage}
-              alt="User Profile"
-              className="w-32 h-32 rounded-full object-cover shadow-lg border-4 border-gradient-to-r from-blue-500 to-purple-500"
-            />
-          )}
-          <div className="text-center space-y-3">
-            <h2 className="text-2xl font-semibold">{currentUser.name}</h2>
-            <p className="text-lg text-gray-300">
-              <strong>Email:</strong> {currentUser.email}
-            </p>
-            <p className="text-lg text-gray-300">
-              <strong>Role:</strong> {currentUser.role}
-            </p>
-          </div>
-
-          {/* Action Button */}
-          <button className="px-8 py-2 bg-gradient-to-r from-blue-500 to-indigo-600 rounded-lg text-lg font-medium hover:bg-gradient-to-l transform hover:scale-105 transition-all">
-            View Profile
-          </button>
-
-          {/* Next Button */}
-          <button
-            className="absolute right-4 text-4xl text-indigo-400 hover:text-indigo-500 disabled:text-gray-600 disabled:cursor-not-allowed transform hover:scale-110 transition duration-200"
-            onClick={nextUser}
-            disabled={currentIndex === users.length - 1}
-          >
-            &#8594;
-          </button>
+              {/* Action Button */}
+              <button className="px-6 py-2 bg-gradient-to-r from-blue-500 to-indigo-600 rounded-lg text-lg font-medium hover:bg-gradient-to-l transform hover:scale-105 transition-all">
+                View Profile
+              </button>
+            </div>
+          ))}
         </div>
       )}
     </div>

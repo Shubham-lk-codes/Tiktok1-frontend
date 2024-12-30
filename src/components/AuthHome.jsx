@@ -1,27 +1,22 @@
 import Navbar from "./Navbar";
+// eslint-disable-next-line no-unused-vars
 import Profile from "../pages/Profile";
-import Footer from "./Footer";
+import SidebarFooter from "./Footer";
 
-const AuthHome = ()=>{
-    return(
-        <>
-         <Navbar />
-        <div className="text-white">
-           
-            {/* side bar left side */}
-            <div>
-            <Profile />
-            </div>
-            {/* main conponent right side */}
-            <div className="text-white">
-              
-            </div>
-
-        </div>
-        <Footer />
-        </>
-    )
+const AuthHome = () => {
+  return (
+    <>
+      
+      <div className="text-whitec fixed z-10 w-full  from-gray-900 via-purple-900 to-black">
+      <Navbar />
         
-}
+      </div>
+      <div className="text-black">
+        <SidebarFooter />
+        </div>
+      
+    </>
+  );
+};
 
 export default AuthHome;

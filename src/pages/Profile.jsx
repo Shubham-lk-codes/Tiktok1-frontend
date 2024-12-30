@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 // eslint-disable-next-line no-unused-vars
 import React, { useEffect, useState } from "react";
 import API from "../utils/api";
@@ -126,23 +127,6 @@ const Profile = () => {
         )}
       </div>
 
-      <div className="w-full lg:w-2/3 p-8 lg:p-12">
-        {showVideos ? (
-          <VideoPage />
-        ) : (
-          <>
-            <UsersList />
-            <div className="w-full mt-8">
-              <button
-                onClick={() => setShowVideos(true)}
-                className="block w-full py-4 px-6 bg-gradient-to-r from-purple-500 to-indigo-600 text-white text-center font-semibold rounded-lg shadow-lg hover:from-indigo-600 hover:to-purple-500 transition-all ease-in-out duration-300 transform hover:scale-105"
-              >
-                Explore Videos
-              </button>
-            </div>
-          </>
-        )}
-      </div>
     </div>
   );
 };
