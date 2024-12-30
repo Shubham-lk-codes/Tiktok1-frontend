@@ -83,13 +83,13 @@ const SidebarFooter = () => {
           <FaPlusCircle className="mr-5 text-xl" />
           <span>Add</span>
         </button>
-        <button
+        {/* <button
           className={buttonClass}
           onClick={() => setActiveContent("search")}
         >
           <FaSearch className="mr-5 text-xl" />
           <span>Search</span>
-        </button>
+        </button> */}
         <button
           className={buttonClass}
           onClick={() => setActiveContent("profile")}
