@@ -1,26 +1,26 @@
 // eslint-disable-next-line no-unused-vars
-import React, { useState } from 'react';
-import { Link, useNavigate } from 'react-router-dom';
-import API from '../utils/api';
+import React, { useState } from "react";
+import { Link, useNavigate } from "react-router-dom";
+import API from "../utils/api";
 
 const Navbar = () => {
-  const [searchQuery, setSearchQuery] = useState('');
+  const [searchQuery, setSearchQuery] = useState("");
   const [isMenuOpen, setIsMenuOpen] = useState(false);
-  const token = localStorage.getItem('token');
+  const token = localStorage.getItem("token");
   const navigate = useNavigate();
 
   const handleLogout = () => {
-    localStorage.removeItem('token');
-    window.location.href = '/';
+    localStorage.removeItem("token");
+    window.location.href = "/";
   };
 
   const handleSearch = async (e) => {
     e.preventDefault();
     try {
       const response = await API.get(`/videos/search?query=${searchQuery}`);
-      navigate('/VideoPage', { state: { videos: response.data } });
+      navigate("/VideoPage", { state: { videos: response.data } });
     } catch (error) {
-      console.error('Error searching videos:', error);
+      console.error("Error searching videos:", error);
     }
   };
 
@@ -60,7 +60,7 @@ const Navbar = () => {
       {/* Right section: Links */}
       <div
         className={`${
-          isMenuOpen ? 'flex' : 'hidden'
+          isMenuOpen ? "flex" : "hidden"
         } lg:flex items-center space-x-4 mt-2 md:mt-0 w-full lg:w-auto`}
       >
         {token ? (
@@ -91,7 +91,7 @@ const Navbar = () => {
       {/* Mobile menu (for smaller screens) */}
       <div
         className={`lg:hidden fixed top-0 left-0 w-full h-full bg-gray-800 bg-opacity-75 z-50 transition-all duration-300 ${
-          isMenuOpen ? 'block' : 'hidden'
+          isMenuOpen ? "block" : "hidden"
         }`}
         onClick={() => setIsMenuOpen(false)}
       >

@@ -1,5 +1,7 @@
+// eslint-disable-next-line no-unused-vars
 import React, { useState } from 'react';
 import API from '../utils/api';
+// eslint-disable-next-line no-unused-vars
 import AuthHome from '../components/AuthHome';
 
 const Login = () => {

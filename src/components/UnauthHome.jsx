@@ -32,8 +32,16 @@ const UnuthHome = () => {
         <div className="mt-12 text-center">
           <h2 className="text-xl font-semibold text-white mb-4">Get the App</h2>
           <div className="flex justify-center space-x-6">
-            <img src="app.png" alt="App Store" className="w-32 h-auto rounded-md shadow-lg" />
-            <img src="play1.png" alt="Google Play" className="w-32 h-auto rounded-md shadow-lg" />
+            <img
+              src="app.png"
+              alt="App Store"
+              className="w-32 h-auto rounded-md shadow-lg"
+            />
+            <img
+              src="play1.png"
+              alt="Google Play"
+              className="w-32 h-auto rounded-md shadow-lg"
+            />
           </div>
         </div>
       </div>
