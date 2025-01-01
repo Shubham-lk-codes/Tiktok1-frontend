@@ -1,11 +1,13 @@
-// eslint-disable-next-line no-unused-vars
+// UsersList.jsx
 import React, { useState, useEffect } from "react";
-import API from "../utils/api";
+import { useNavigate } from "react-router-dom"; // Import useNavigate
+import API from "../utils/api"; // Ensure this is correctly set up
 
 const UsersList = () => {
   const [users, setUsers] = useState([]);
   const [error, setError] = useState("");
   const [loading, setLoading] = useState(true);
+  const navigate = useNavigate(); // React Router navigation hook
 
   useEffect(() => {
     const fetchUsers = async () => {
@@ -38,12 +40,12 @@ const UsersList = () => {
         <p className="text-center text-gray-300">No users found</p>
       ) : (
         <div className="flex overflow-x-auto space-x-6 py-4">
-          {users.map((user, index) => (
+          {users.map((user) => (
             <div
-              key={user._id || index}
-              className="min-w-[250px] flex-shrink-0 flex flex-col items-center bg-gray-800 bg-opacity-90 p-6 rounded-2xl shadow-lg space-y-4"
+              key={user._id}
+              className="min-w-[250px] flex-shrink-0 flex flex-col items-center bg-gray-800 bg-opacity-90 p-6 rounded-2xl shadow-lg space-y-4 cursor-pointer"
+              onClick={() => navigate(`/profile/${user._id}`)} // Navigate to the profile page
             >
-              {/* User Profile Image */}
               {user.profileImage && (
                 <img
                   src={user.profileImage}
@@ -60,8 +62,6 @@ const UsersList = () => {
                   <strong>Role:</strong> {user.role}
                 </p>
               </div>
-
-              {/* Action Button */}
               <button className="px-6 py-2 bg-gradient-to-r from-blue-500 to-indigo-600 rounded-lg text-lg font-medium hover:bg-gradient-to-l transform hover:scale-105 transition-all">
                 View Profile
               </button>

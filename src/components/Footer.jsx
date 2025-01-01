@@ -9,7 +9,7 @@ import {
   FaVideo,
   FaUser,
   FaPlusCircle,
-  FaSearch,
+  FaComment, // Added FaComment for the message icon
 } from "react-icons/fa";
 import { Link } from "react-router-dom";
 
@@ -24,7 +24,7 @@ const SidebarFooter = () => {
 
   const footerButtonClass = `
     flex flex-col items-center hover:bg-blue-500 hover:text-white  
-    rounded-md transition duration-300 space-y-1
+    rounded-md transition duration-300 space-y-1 pl-10
   `;
 
   // Right-side content to display based on state
@@ -48,8 +48,8 @@ const SidebarFooter = () => {
             <UploadVideo />
           </div>
         );
-      case "search":
-        return <div className="">Search for something...</div>;
+      case "message":
+        return <div className="">message</div>;
       case "profile":
         return (
           <div className="p-">
@@ -83,13 +83,15 @@ const SidebarFooter = () => {
           <FaPlusCircle className="mr-5 text-xl" />
           <span>Add</span>
         </button>
-        {/* <button
-          className={buttonClass}
-          onClick={() => setActiveContent("search")}
-        >
-          <FaSearch className="mr-5 text-xl" />
-          <span>Search</span>
-        </button> */}
+        <Link to="/chat">
+          <button
+            className={buttonClass}
+            onClick={() => setActiveContent("message")}
+          >
+            <FaComment className="mr-5 text-xl" />
+            <span>Messages</span>
+          </button>
+        </Link>
         <button
           className={buttonClass}
           onClick={() => setActiveContent("profile")}
@@ -124,10 +126,12 @@ const SidebarFooter = () => {
             <span className="text-xs">Add</span>
           </button>
         </Link>
-        {/* <button className={footerButtonClass}>
-          <FaSearch className="text-2xl" />
-          <span className="text-xs">Search</span>
-        </button> */}
+        <Link to="/chat">
+          <button className={footerButtonClass}>
+            <FaComment className="text-2xl" />
+            <span className="text-xs">Messages</span>
+          </button>
+        </Link>
         <Link to="/profile">
           <button className={footerButtonClass}>
             <FaUser className="text-2xl" />
