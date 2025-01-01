@@ -1,7 +1,7 @@
 import axios from 'axios';
 
 const API = axios.create({
-  baseURL: 'http://localhost:5000/api',
+  baseURL: 'https://tiktok1-backend.onrender.com/api',
   withCredentials: true, // Include credentials (like cookies or authorization headers) in cross-origin requests
 });
 

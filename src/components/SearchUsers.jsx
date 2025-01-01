@@ -1,3 +1,5 @@
+/* eslint-disable react/prop-types */
+// eslint-disable-next-line no-unused-vars
 import React, { useState } from "react";
 import axios from "axios";
 
@@ -7,7 +9,7 @@ const SearchUsers = ({ token, onStartConversation }) => {
 
   const handleSearch = async () => {
     try {
-      const res = await axios.get(`http://localhost:5000/api/users?search=${searchQuery}`, {
+      const res = await axios.get(`https://tiktok1-backend.onrender.com/api/users?search=${searchQuery}`, {
         headers: { Authorization: `Bearer ${token}` },
       });
       setUsers(res.data);
@@ -19,7 +21,7 @@ const SearchUsers = ({ token, onStartConversation }) => {
   const handleStartConversation = async (recipientId) => {
     try {
       await axios.post(
-        "http://localhost:5000/api/conversations",
+        "https://tiktok1-backend.onrender.com/api/conversations",
         { recipientId, message: "Hello!" },
         { headers: { Authorization: `Bearer ${token}` } }
       );

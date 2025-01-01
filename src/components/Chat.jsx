@@ -1,3 +1,5 @@
+/* eslint-disable react/prop-types */
+// eslint-disable-next-line no-unused-vars
 import React, { useEffect, useState } from "react";
 import { io } from "socket.io-client";
 import axios from "axios";
@@ -8,7 +10,7 @@ const Chat = ({ token, conversationId }) => {
   const [socket, setSocket] = useState(null);
 
   useEffect(() => {
-    const newSocket = io("http://localhost:5000");
+    const newSocket = io("https://tiktok1-backend.onrender.com");
     setSocket(newSocket);
 
     newSocket.emit("joinConversation", conversationId);
@@ -25,7 +27,7 @@ const Chat = ({ token, conversationId }) => {
   useEffect(() => {
     const fetchMessages = async () => {
       try {
-        const res = await axios.get(`http://localhost:5000/api/messages/${conversationId}`, {
+        const res = await axios.get(`https://tiktok1-backend.onrender.com/api/messages/${conversationId}`, {
           headers: { Authorization: `Bearer ${token}` },
         });
         setMessages(res.data);
@@ -41,7 +43,7 @@ const Chat = ({ token, conversationId }) => {
     const message = { conversationId, text: newMessage };
 
     try {
-      const res = await axios.post("http://localhost:5000/api/messages", message, {
+      const res = await axios.post("https://tiktok1-backend.onrender.com/api/messages", message, {
         headers: { Authorization: `Bearer ${token}` },
       });
       socket.emit("sendMessage", res.data);

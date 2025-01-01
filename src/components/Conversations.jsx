@@ -1,3 +1,5 @@
+/* eslint-disable react/prop-types */
+// eslint-disable-next-line no-unused-vars
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 
@@ -7,7 +9,7 @@ const Conversations = ({ token, onSelectConversation, refresh }) => {
   useEffect(() => {
     const fetchConversations = async () => {
       try {
-        const res = await axios.get("http://localhost:5000/api/conversations", {
+        const res = await axios.get("https://tiktok1-backend.onrender.com/api/conversations", {
           headers: { Authorization: `Bearer ${token}` },
         });
         setConversations(res.data);

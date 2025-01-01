@@ -1,4 +1,5 @@
 // UsersList.jsx
+// eslint-disable-next-line no-unused-vars
 import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom"; // Import useNavigate
 import API from "../utils/api"; // Ensure this is correctly set up
