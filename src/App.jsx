@@ -13,6 +13,7 @@ import Profile from "./pages/Profile";
 import UsersList from "./pages/UsersList";
 import Footer from "./components/Footer";
 import ChatPage from "./pages/ChatPage";
+import Feed from "./pages/Feed";
 
 import ProfilePage from "./pages/ParentUserpage";
 const App = () => {
@@ -50,6 +51,7 @@ const App = () => {
         <Route path="/footer" element={<Footer />} />
         <Route path="/chat" element={<ChatPage token={token} />} />
         <Route path="/profile/:userId" element={<ProfilePage CurrentUserId={currentUserId} />} />
+        <Route path="/feedpost" element={<Feed />} />
       </Routes>
     </Router>
   );
